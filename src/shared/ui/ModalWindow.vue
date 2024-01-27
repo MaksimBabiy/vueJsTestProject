@@ -3,7 +3,7 @@
     <div class="modal-body">
       <span class="modal-close" @click="onHandleModal">🗙</span>
       <h2>Add the User</h2>
-      <Form />
+      <Form :onHandleModal="onHandleModal" />
     </div>
   </div>
 </template>

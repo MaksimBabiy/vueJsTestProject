@@ -20,7 +20,10 @@ import { required, minLength, email } from '@vuelidate/validators'
 import CustomInput from './CustomInput.vue'
 
 const userStore = useUsersStore()
-
+interface Props {
+  onHandleModal: () => void
+}
+const props = defineProps<Props>()
 const formData = reactive({
   first_name: '',
   email: ''
@@ -36,6 +39,7 @@ const handleAdd = async () => {
   const result = await v$.value.$validate()
   if (result) {
     userStore.addUserToList(formData)
+    props.onHandleModal()
   }
 }
 </script>
