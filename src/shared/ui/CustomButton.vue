@@ -16,6 +16,7 @@ button {
   border-radius: 4px;
   min-width: 80px;
   cursor: pointer;
+  align-self: flex-end;
 
   &:hover {
     opacity: 0.5;

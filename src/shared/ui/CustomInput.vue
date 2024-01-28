@@ -11,8 +11,8 @@
 </template>
 <script lang="ts" setup>
 interface Props {
-  label: string
-  modelValue: string | undefined
+  label?: string
+  modelValue?: string | undefined
 }
 defineProps<Props>()
 </script>

@@ -5,6 +5,7 @@ import { onMounted, ref } from 'vue'
 import CustomButton from '../shared/ui/CustomButton.vue'
 import { useUsersStore } from '@/app/stores/users'
 import DetailedModal from '@/widgets/DetailedModal.vue'
+import CustomInput from '@/shared/ui/CustomInput.vue'
 const userStore = useUsersStore()
 onMounted(async () => {
   await userStore.getUsers()
@@ -23,7 +24,7 @@ const onHandleDetailedModal = () => {
     <ModalWindow v-show="isModalVisiable" :onHandleModal="onHandleModal" />
     <DetailedModal v-show="isModalDetailedVisiable" :on-handle-modal="onHandleDetailedModal" />
     <div>
-      <input type="text" @input="userStore.useFilter" placeholder="Search" />
+      <CustomInput type="text" @input="userStore.useFilter" :placeholder="'Search by name'" />
       <CustomButton :onHandleBtn="onHandleModal">Add User</CustomButton>
     </div>
     <UserList :users="userStore.filter" :onHandleOpenDetailed="onHandleDetailedModal" />
