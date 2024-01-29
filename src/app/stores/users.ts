@@ -7,7 +7,7 @@ export const useUsersStore = defineStore('users', () => {
   const users = ref<IUserExtended[]>([])
   const filterValue = ref('')
 
-  const addUserToList = async (user: IUser) => {
+  const addUserToList = async (user: IUserExtended) => {
     await addUser(user)
     users.value.push(user)
   }
@@ -45,7 +45,7 @@ export const useUsersStore = defineStore('users', () => {
   }
   const getUsers = async () => {
     try {
-      users.value = await getAllUsers()
+      users.value = (await getAllUsers()) as IUser[]
     } catch (err) {
       console.log(err)
       users.value = []

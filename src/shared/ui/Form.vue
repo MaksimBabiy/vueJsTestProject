@@ -27,7 +27,8 @@ const props = defineProps<Props>()
 
 const formData = reactive({
   first_name: '',
-  email: ''
+  email: '',
+  id: 0
 })
 const rules = computed(() => {
   return {
@@ -39,6 +40,7 @@ const v$ = useVuelidate(rules, formData)
 const handleAdd = async () => {
   const result = await v$.value.$validate()
   if (result) {
+    formData.id = userStore.users[userStore.users.length - 1].id + 1
     userStore.addUserToList(formData)
     props.onHandleModal()
   }
