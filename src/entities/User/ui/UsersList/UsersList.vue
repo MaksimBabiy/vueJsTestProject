@@ -21,22 +21,33 @@ const handleOpen = (user: IUser) => {
 <template>
   <div class="notFound" v-show="users.length === 0"><Loader /> <span>Not Found</span></div>
   <ul>
-    <li v-for="user in users" :key="user.id" class="userItem">
-      <img :src="user.avatar" alt="avatar" @click="() => handleOpen(user)" />
-      <div>
-        <p>
-          <span>{{ user.first_name }}</span> <span>{{ user.last_name }}</span>
-        </p>
-        <span>{{ user.email }}</span>
-      </div>
-      <span @click="() => usersStore.removeUserFromList(user.id as number)" class="removeUser"
-        >🗙</span
-      >
-    </li>
+    <TransitionGroup name="list">
+      <li v-for="user in users" :key="user.id" class="userItem">
+        <img :src="user.avatar" alt="avatar" @click="() => handleOpen(user)" />
+        <div>
+          <p>
+            <span>{{ user.first_name }}</span> <span>{{ user.last_name }}</span>
+          </p>
+          <span>{{ user.email }}</span>
+        </div>
+        <span @click="() => usersStore.removeUserFromList(user.id as number)" class="removeUser"
+          >🗙</span
+        >
+      </li>
+    </TransitionGroup>
   </ul>
 </template>
 
 <style lang="scss" scoped>
+.list-enter-active,
+.list-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+}
 .notFound {
   display: flex;
   gap: 10px;
