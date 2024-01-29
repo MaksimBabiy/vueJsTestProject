@@ -1,6 +1,6 @@
 <template>
-  <div class="modal-container">
-    <div class="modal-body">
+  <div class="modal-container" v-if="show" @click="$emit('update:show', false)">
+    <div class="modal-body" @click.stop>
       <span class="modal-close" @click="onHandleModal">🗙</span>
       <h2>Detailed Info</h2>
       <div class="userInfoContainer">
@@ -49,6 +49,7 @@ const onHandleEdit = () => {
 }
 interface Props {
   onHandleModal: () => void
+  show: boolean
 }
 defineProps<Props>()
 </script>
