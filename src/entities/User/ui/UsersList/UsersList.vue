@@ -43,10 +43,12 @@ const handleOpen = (user: IUser) => {
 .list-leave-active {
   transition: opacity 0.5s ease;
 }
-
 .list-enter-from,
 .list-leave-to {
   opacity: 0;
+}
+.list-move {
+  transition: transform 0.8s ease;
 }
 .notFound {
   display: flex;
