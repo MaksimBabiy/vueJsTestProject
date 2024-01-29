@@ -1,7 +1,7 @@
 <template>
-  <div class="modal-container">
-    <div class="modal-body">
-      <span class="modal-close" @click="onHandleModal">🗙</span>
+  <div class="modal-container" v-if="show" @click="$emit('update:show', false)">
+    <div class="modal-body" @click.stop>
+      <span class="modal-close" @click="$emit('update:show', false)">🗙</span>
       <h2>Add the User</h2>
       <Form :onHandleModal="onHandleModal" />
     </div>
@@ -11,6 +11,7 @@
 import Form from './Form.vue'
 interface Props {
   onHandleModal: () => void
+  show: boolean
 }
 defineProps<Props>()
 </script>
@@ -19,7 +20,7 @@ defineProps<Props>()
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;

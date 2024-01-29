@@ -21,7 +21,7 @@ const onHandleDetailedModal = () => {
 </script>
 <template>
   <main>
-    <ModalWindow v-show="isModalVisiable" :onHandleModal="onHandleModal" />
+    <ModalWindow v-model:show="isModalVisiable" :onHandleModal="onHandleModal" />
     <DetailedModal v-show="isModalDetailedVisiable" :on-handle-modal="onHandleDetailedModal" />
     <div>
       <CustomInput type="text" @input="userStore.useFilter" :placeholder="'Search by name'" />

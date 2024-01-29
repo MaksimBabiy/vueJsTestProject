@@ -24,6 +24,7 @@ interface Props {
   onHandleModal: () => void
 }
 const props = defineProps<Props>()
+
 const formData = reactive({
   first_name: '',
   email: ''
